@@ -8,6 +8,10 @@ Oh My Zsh: https://ohmyz.sh/
 
 Powerlevel10k theme: https://github.com/romkatv/powerlevel10k
 
+## Look
+
+![image](https://user-images.githubusercontent.com/72258375/146679021-2a0ede7a-9c9f-4018-8c63-278121773b56.png)
+
 ## End-result
 
 Goal is to have all informations on the left side of the shell, and remove anything that can pop up on the right as It causes issue when copy/pasting multi-lines

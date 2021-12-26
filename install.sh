@@ -115,7 +115,7 @@ check_curl_wget() {
     fi
 
     msg "${YELLOW} Testing web access to download ozsh install script ${NOFORMAT}"
-    if ( [[ "${dependency}" = "curl" ]] && [[ "$(curl -sL -w '%{http_code}' ${OZSH_URL} -o /dev/null)" = "200" ]] ) || ( [[ "${dependency}" = "wget" ]] && wget --spider --server-response ${OZSH_URL} 2>&1 | grep -c '200\ OK' -eq 1 ); then
+    if ( [[ "${dependency}" = "curl" ]] && curl -sL -w '%{http_code}' ${OZSH_URL} -o /dev/null | grep -c '200' -eq 1 ) || ( [[ "${dependency}" = "wget" ]] && wget --spider --server-response ${OZSH_URL} 2>&1 | grep -c '200\ OK' -eq 1 ); then
         msg "${PURPLE} Web access is up, continuing the installation. ${NOFORMAT}"
     else
         msg "${RED} No web access to ${OZSH_URL}, check your connectivity ${NOFORMAT}"

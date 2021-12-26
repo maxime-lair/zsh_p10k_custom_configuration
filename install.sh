@@ -32,7 +32,7 @@ EOF
 cleanup() {
   trap - SIGINT SIGTERM ERR EXIT
   # script cleanup here
-  msg "${GREEN}Script is done, ending nicely.${NOFORMAT}"
+  msg "Script is done, quitting."
 }
 
 setup_colors() {
@@ -60,15 +60,24 @@ parse_params() {
 
   while :; do
     case "${1-}" in
-    -h | --help) usage ;;
-    -v | --verbose) set -x ;;
-    -g | --global) global=1 ;; # Used for global parameter
-      shift
-      ;;
-    -?*) die "Unknown option: $1" ;;
-    *) break ;;
+    -h | --help) 
+        usage 
+        ;;
+    -v | --verbose) 
+        set -x 
+        ;;
+    -g | --global) 
+        global=1 
+        ;;
+        shift
+        ;;
+    -?*) 
+        die "Unknown option: $1"
+        ;;
+    *) 
+        break 
+        ;;
     esac
-    shift
   done
 
   return 0
@@ -76,7 +85,7 @@ parse_params() {
 
 check_zsh() {
     msg "${YELLOW} Checking dependency for zsh shell ${NOFORMAT}"
-    if [[ command -v zsh ]]; then
+    if command -v zsh &> /dev/null; then
         msg "${GREEN} zsh is installed, continuing.. ${NOFORMAT}"
     else
         msg "${RED} zsh is NOT installed ${NOFORMAT}"
@@ -90,12 +99,12 @@ check_curl_wget() {
     msg "${YELLOW} Checking dependency, we need either wget or curl and internet access to install ozsh ${NOFORMAT}"
     dependency=''
     msg "${YELLOW} Testing wget access..${NOFORMAT}"
-    if [[ command -v curl  ]]; then
+    if command -v curl &> /dev/null; then
         msg "${GREEN} Curl is installed${NOFORMAT}"
         dependency='curl'
     else
         msg "${ORANGE} Curl failed, testing wget.. ${NOFORMAT}"
-        if [[ command -v wget ]]; then
+        if command -v wget &> /dev/null; then
             msg "${GREEN} wget installed, we can continue the installation ${NOFORMAT}"
             dependency='wget'
         else
@@ -106,7 +115,7 @@ check_curl_wget() {
     fi
 
     msg "${YELLOW} Testing web access to download ozsh install script ${NOFORMAT}"
-    if [[ ( "${dependency}" = "curl" && curl -s --head --request GET ${OZSH_URL} | grep "200 OK" > /dev/null ) || ( "${dependency}" = "wget" && wget --spider --server-response ${OZSH_URL} 2>&1 | grep '200\ OK' | wc -l -eq 1 )]]; then
+    if ( [[ "${dependency}" = "curl" ]] && curl -s --head --request GET ${OZSH_URL} | grep "200 OK" > /dev/null ) || ( [[ "${dependency}" = "wget" ]] && wget --spider --server-response ${OZSH_URL} 2>&1 | grep '200\ OK' | wc -l -eq 1 ); then
         msg "${GREEN} Web access is up, continuing the installation. ${NOFORMAT}"
     else
         msg "${RED} No web access to ${OZSH_URL}, check your connectivity ${NOFORMAT}"

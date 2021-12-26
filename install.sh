@@ -61,14 +61,14 @@ parse_params() {
   while :; do
     case "${1-}" in
     -h | --help) 
-        usage 
+        usage
         ;;
     -v | --verbose) 
-        set -x 
+        set -x
+        shift
         ;;
     -g | --global) 
-        global=1 
-        ;;
+        global=1
         shift
         ;;
     -?*) 
@@ -141,7 +141,7 @@ local_install() {
 
     msg "${BLUE} Default installation on local user $(whoami) ${NOFORMAT}"
 
-    if [[ ! -d $HOME/.fonts ]] && mkdir $HOME/.fonts
+    mkdir -p $HOME/.fonts
 
     if [[ ${dependency} = "curl" ]]; then
         msg "Starting installation with curl.."
@@ -201,19 +201,19 @@ msg "${RED}Read parameters:${NOFORMAT}"
 msg "- global: ${global}"
 
 # Check dependency: zsh
-check_zsh()
+check_zsh
 
 # Check dependency: curl or wget
-check_curl_wget()
+check_curl_wget
 
 # Check if global or local installation
 ## Global requires sudo right
 if [[ ${global} -eq 1 ]]; then
-    global_install()
+    global_install
 else
-    local_install()
+    local_install
 fi
 
-cleanup()
+cleanup
 
 

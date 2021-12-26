@@ -5,7 +5,7 @@
 # Variable needed for URL/THEME
 OZSH_URL="https://raw.github.com/"
 OZSH_FULL="https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
-PLUGIN_LIST="git zsh-autosuggestions zsh-syntax-highlighting zsh-completions docker"
+PLUGIN_LIST="git docker"
 
 # Set debug mode in case of script failure for full trace
 set -Eeuo pipefail

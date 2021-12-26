@@ -8,15 +8,18 @@ Oh My Zsh: https://ohmyz.sh/
 
 Powerlevel10k theme: https://github.com/romkatv/powerlevel10k
 
-## Look
+## Theme
 
-![image](https://user-images.githubusercontent.com/72258375/146679021-2a0ede7a-9c9f-4018-8c63-278121773b56.png)
+UI:
+![image](https://user-images.githubusercontent.com/72258375/147422652-88fc83be-5201-4137-8512-ff4cc6d10f54.png)
+
+Color palette:
+![image](https://user-images.githubusercontent.com/72258375/147422657-d2396309-51a3-4be7-a241-c59f6d589d78.png)
+
 
 ## End-result
 
 ** UNDER CONSTRUCTION ** DO NOT CLONE **
-
-
 
 Goal is to have all informations on the left side of the shell, and remove anything that can pop up on the right as It causes issue when copy/pasting multi-lines
 

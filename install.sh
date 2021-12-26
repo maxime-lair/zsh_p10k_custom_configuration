@@ -98,7 +98,7 @@ check_zsh() {
 check_curl_wget() {
     msg "${YELLOW} Checking dependency, we need either wget or curl and internet access to install ozsh ${NOFORMAT}"
     dependency=''
-    msg "${YELLOW} Testing wget access..${NOFORMAT}"
+    msg "${YELLOW} Testing curl access..${NOFORMAT}"
     if command -v curl &> /dev/null; then
         msg "${GREEN} Curl is installed${NOFORMAT}"
         dependency='curl'
@@ -115,8 +115,8 @@ check_curl_wget() {
     fi
 
     msg "${YELLOW} Testing web access to download ozsh install script ${NOFORMAT}"
-    if ( [[ "${dependency}" = "curl" ]] && curl -s --head --request GET ${OZSH_URL} | grep "200 OK" > /dev/null ) || ( [[ "${dependency}" = "wget" ]] && wget --spider --server-response ${OZSH_URL} 2>&1 | grep '200\ OK' | wc -l -eq 1 ); then
-        msg "${GREEN} Web access is up, continuing the installation. ${NOFORMAT}"
+    if ( [[ "${dependency}" = "curl" ]] && curl -s --head --request GET ${OZSH_URL} | grep "200 OK" > /dev/null ) || ( [[ "${dependency}" = "wget" ]] && wget --spider --server-response ${OZSH_URL} 2>&1 | grep -c '200\ OK' -eq 1 ); then
+        msg "${PURPLE} Web access is up, continuing the installation. ${NOFORMAT}"
     else
         msg "${RED} No web access to ${OZSH_URL}, check your connectivity ${NOFORMAT}"
         die "Missing web access"
@@ -141,14 +141,14 @@ local_install() {
 
     msg "${BLUE} Default installation on local user $(whoami) ${NOFORMAT}"
 
-    mkdir -p $HOME/.fonts
+    mkdir -p "$HOME"/.fonts
 
     if [[ ${dependency} = "curl" ]]; then
         msg "Starting installation with curl.."
         sh -c "$(curl -fsSL ${OZSH_FULL})"
 
         # Install fonts
-        cd $HOME/.fonts 
+        cd "$HOME"/.fonts 
         curl -O -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
         curl -O -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
         curl -O -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
@@ -160,30 +160,30 @@ local_install() {
         sh -c "$(wget ${OZSH_FULL} -O -)"
 
         # Install fonts
-        wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -P $HOME/.fonts/
-        wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf -P $HOME/.fonts/
-        wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf -P $HOME/.fonts/
-        wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf -P $HOME/.fonts/
+        wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -P "$HOME"/.fonts/
+        wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf -P "$HOME"/.fonts/
+        wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf -P "$HOME"/.fonts/
+        wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf -P "$HOME"/.fonts/
 
     fi
 
-    msg "${BLUE} Installing fonts ${NOFORMAT}"
-    fc-cache -fv $HOME/.fonts
+    msg "${CYAN} Installing fonts ${NOFORMAT}"
+    fc-cache -fv "$HOME"/.fonts
 
     # Add plugins
-    sed -i 's#^plugins=.*#plugins=(${PLUGIN_LIST})#' $HOME/.zshrc
+    sed -i "s#^plugins=.*#plugins=(${PLUGIN_LIST})#" "$HOME"/.zshrc
 
     msg "${BLUE} Ozsh installation complete, changing your default shell.. ${NOFORMAT}"
-    chsh -s $(which zsh)
+    chsh -s "$(which zsh)"
     zsh
 
     # Installing powerlevel10k theme
 
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    sed -i 's#^ZSH_THEME.*#ZSH_THEME="powerlevel10k/powerlevel10k"#' $HOME/.zshrc
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
+    sed -i 's#^ZSH_THEME.*#ZSH_THEME="powerlevel10k/powerlevel10k"#' "$HOME"/.zshrc
     
-    cd ${script_dir}
-    mv .p10k.zsh $HOME/.p10k.zsh
+    cd "${script_dir}"
+    mv .p10k.zsh "$HOME"/.p10k.zsh
 
     ## reload
     zsh

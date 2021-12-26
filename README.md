@@ -10,8 +10,11 @@ Powerlevel10k theme: https://github.com/romkatv/powerlevel10k
 
 ## Theme
 
-UI:
-![image](https://user-images.githubusercontent.com/72258375/147422652-88fc83be-5201-4137-8512-ff4cc6d10f54.png)
+![image](https://user-images.githubusercontent.com/72258375/147422687-00a87cca-4723-4f03-aae2-298bdbf871d8.png)
+
+
+
+
 
 Color palette:
 ![image](https://user-images.githubusercontent.com/72258375/147422657-d2396309-51a3-4be7-a241-c59f6d589d78.png)

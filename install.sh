@@ -139,13 +139,13 @@ global_install() {
 
 local_install() {
 
-    msg "${BLUE} Default installation on local user $(whoami) ${NOFORMAT}"
+    msg "${CYAN} Default installation on local user $(whoami) ${NOFORMAT}"
 
     mkdir -p "$HOME"/.fonts
 
     if [[ ${dependency} = "curl" ]]; then
         msg "Starting installation with curl.."
-        sh -c "$(curl -fsSL ${OZSH_FULL})"
+        sh -c "$(curl -fsSL ${OZSH_FULL})" "" --unattended
 
         # Install fonts
         cd "$HOME"/.fonts 
@@ -157,7 +157,7 @@ local_install() {
 
     else
         msg "Starting installation with wget.."
-        sh -c "$(wget ${OZSH_FULL} -O -)"
+        sh -c "$(wget ${OZSH_FULL} -O -)" "" --unattended
 
         # Install fonts
         wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -P "$HOME"/.fonts/
@@ -173,7 +173,7 @@ local_install() {
     # Add plugins
     sed -i "s#^plugins=.*#plugins=(${PLUGIN_LIST})#" "$HOME"/.zshrc
 
-    msg "${BLUE} Ozsh installation complete, changing your default shell.. ${NOFORMAT}"
+    msg "${CYAN} Ozsh installation complete, changing your default shell.. ${NOFORMAT}"
     chsh -s "$(which zsh)"
     zsh
 

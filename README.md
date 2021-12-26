@@ -14,6 +14,10 @@ Powerlevel10k theme: https://github.com/romkatv/powerlevel10k
 
 ## End-result
 
+** UNDER CONSTRUCTION ** DO NOT CLONE **
+
+
+
 Goal is to have all informations on the left side of the shell, and remove anything that can pop up on the right as It causes issue when copy/pasting multi-lines
 
 The theme will be installed on a common directory in **/usr/share** to be useable by all users (new or existing) with common themes

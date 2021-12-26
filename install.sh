@@ -3,7 +3,7 @@
 # Credit for script template: https://betterdev.blog/minimal-safe-bash-script-template/
 
 # Variable needed for URL/THEME
-OZSH_URL="https://raw.github.com/ohmyzsh/"
+OZSH_URL="https://raw.github.com/"
 OZSH_FULL="https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 PLUGIN_LIST="git zsh-autosuggestions zsh-syntax-highlighting zsh-completions docker"
 

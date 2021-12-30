@@ -1,6 +1,10 @@
 # zsh_p10k_custom_configuration
 
-Custom Oh My Zsh - powerlevel10k theme - made for copy and paste
+The zsh theme I'm currently using, with plugins list.
+
+Will soon be packaged in .dotfile with ansible playbook for automatic install
+
+Using zsh + oh-my-zsh + powerlevel10k
 
 ## Credits:
 
@@ -15,29 +19,34 @@ Powerlevel10k theme: https://github.com/romkatv/powerlevel10k
 
 
 
-
 Color palette:
 ![image](https://user-images.githubusercontent.com/72258375/147422657-d2396309-51a3-4be7-a241-c59f6d589d78.png)
 
 
-## End-result
+## Install
 
-** UNDER CONSTRUCTION ** DO NOT CLONE **
+Install all dependencies (zsh, oh-my-zsh and powerlevel10k):
 
-Goal is to have all informations on the left side of the shell, and remove anything that can pop up on the right as It causes issue when copy/pasting multi-lines
-
-The theme will be installed on a common directory in **/usr/share** to be useable by all users (new or existing) with common themes
-
-See https://stackoverflow.com/questions/31624649/how-can-i-get-a-secure-system-wide-oh-my-zsh-configuration for process
-
-To be added:
-- Add installation process
-
-This repo will be closed when I manage to install this with Ansible script, so all new hosts will have the same shell/theme
+`
+# zsh should be install by default now, otherwise use your package manager
+zsh --version
+# Oh-my-zsh install
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# powerlevel10k install with ozsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+# Set powerlevel10k theme
+grep -v "^ZSH_THEME" ~/.zshrc > /tmp/temp.zshrc && mv /tmp/temp.zshrc ~/.zshrc
+echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' > ~/.zshrc
+# configure
+p10k configure
+`
 
 ## Functionalities
 
 It uses all powerlevel10k features, you can uncomment and use the one you had like
+
+I moved all prompts onto the left, so It wouldnt bother me when I copy and paste on articles.
+
 
 ```
     status                  # exit code of the last command

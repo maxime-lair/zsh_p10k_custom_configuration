@@ -113,7 +113,7 @@
   typeset -g POWERLEVEL9K_MODE=awesome-fontconfig
   # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
   # icon overlap when using non-monospace fonts. When set to `none`, spaces are not added.
-  typeset -g POWERLEVEL9K_ICON_PADDING=moderate
+  typeset -g POWERLEVEL9K_ICON_PADDING=none
 
   # When set to true, icons appear before content on both sides of the prompt. When set
   # to false, icons go after content. If empty or not set, icons go before content in the left
@@ -209,21 +209,21 @@
 
   ##################################[ dir: current directory ]##################################
   # Current directory background color.
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND=14
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=152
   # Default current directory foreground color.
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=195
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=236
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
   # Replace removed segment suffixes with this symbol.
   typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
   # Color of the shortened directory segments.
-  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=250
+  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=236
   # Color of the anchor directory segments. Anchor segments are never shortened. The first
   # segment is always an anchor.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=255
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=236
   # Display anchor directory segments in bold.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=false
   # Don't shorten directories that contain any of these files. They are anchors.
   local anchor_files=(
     .bzr
@@ -349,9 +349,9 @@
   #####################################[ vcs: git status ]######################################
   # Version control system colors.
   typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=207
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=214
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=220
-  typeset -g POWERLEVEL9K_VCS_CONFLICTED_BACKGROUND=135
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=202
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=52
+  typeset -g POWERLEVEL9K_VCS_CONFLICTED_BACKGROUND=88
   typeset -g POWERLEVEL9K_VCS_LOADING_BACKGROUND=65
 
   # Branch icon. Set this parameter to '\uF126 ' for the popular Powerline branch icon.
@@ -501,14 +501,14 @@
   typeset -g POWERLEVEL9K_STATUS_OK=true
   typeset -g POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_EXPANSION='✔'
   typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=77
-  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=236
+  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=234
 
   # Status when some part of a pipe command fails but the overall exit status is zero. It may look
   # like this: 1|0.
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION='✔'
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=130
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=233
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=234
 
   # Status when it's just an error code (e.g., '1'). No need to show it if prompt_char is enabled as
   # it will signify error by turning red.
@@ -535,7 +535,7 @@
   ###################[ command_execution_time: duration of the last command ]###################
   # Execution time color.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=234
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=220
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=226
   # Show duration of the last command if takes at least this many seconds.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
   # Show this many fractional digits. Zero means round to seconds.
@@ -907,7 +907,7 @@
   typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_BACKGROUND=28
   # Default context color (no privileges, no SSH).
   typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=231
-  typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=27
+  typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=90
 
   # Context format when running with privileges: user@hostname.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
@@ -1641,7 +1641,7 @@
   ####################################[ time: current time ]####################################
   # Current time color.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=234
-  typeset -g POWERLEVEL9K_TIME_BACKGROUND=171
+  typeset -g POWERLEVEL9K_TIME_BACKGROUND=214
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
   # If set to true, time will update when you hit enter. This way prompts for the past

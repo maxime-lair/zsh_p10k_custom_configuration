@@ -14,7 +14,7 @@ Powerlevel10k theme: https://github.com/romkatv/powerlevel10k
 
 ## Theme
 
-![image](https://user-images.githubusercontent.com/72258375/147422687-00a87cca-4723-4f03-aae2-298bdbf871d8.png)
+![theme_zsh](https://user-images.githubusercontent.com/72258375/147758195-9b8d2bb9-3e30-414f-9e44-e9ec521e737a.gif)
 
 ## Install
 

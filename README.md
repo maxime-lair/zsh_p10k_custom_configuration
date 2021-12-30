@@ -16,37 +16,35 @@ Powerlevel10k theme: https://github.com/romkatv/powerlevel10k
 
 ![image](https://user-images.githubusercontent.com/72258375/147422687-00a87cca-4723-4f03-aae2-298bdbf871d8.png)
 
-
-
-
-Color palette:
-![image](https://user-images.githubusercontent.com/72258375/147422657-d2396309-51a3-4be7-a241-c59f6d589d78.png)
-
-
 ## Install
 
-Install all dependencies (zsh, oh-my-zsh and powerlevel10k):
+Install all dependencies (zsh, oh-my-zsh and powerlevel10k) with install script (assumes you have ZSH already installed):
 
-`
-# zsh should be install by default now, otherwise use your package manager
-zsh --version
-# Oh-my-zsh install
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# powerlevel10k install with ozsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-# Set powerlevel10k theme
-grep -v "^ZSH_THEME" ~/.zshrc > /tmp/temp.zshrc && mv /tmp/temp.zshrc ~/.zshrc
-echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' > ~/.zshrc
-# configure
-p10k configure
-`
+![image](https://user-images.githubusercontent.com/72258375/147749851-6ac4e528-ac6d-42a0-a563-e026f7b8f783.png)
+
+It checks for oh-my-zsh, powerlevel10k, and install them if needed. It saves previous config file in _.old_
 
 ## Functionalities
 
 It uses all powerlevel10k features, you can uncomment and use the one you had like
 
-I moved all prompts onto the left, so It wouldnt bother me when I copy and paste on articles.
+### Plugin options
 
+Located in `.zshrc`, change it at will, [check out more plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
+
+```
+git
+zsh-autosuggestions
+colored-man-pages
+docker
+ssh-agent
+vi-mode
+zsh-syntax-highlighting # Has to be last plugin to load !!
+```
+
+### Prompt options
+
+I moved all prompts onto the left, so It wouldnt bother me when I copy and paste on articles.
 
 ```
     status                  # exit code of the last command
@@ -124,3 +122,11 @@ I moved all prompts onto the left, so It wouldnt bother me when I copy and paste
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
 ```
+
+## Color palette
+
+Included is a color palette script, be sure your $TERM is in 256-color
+
+![image](https://user-images.githubusercontent.com/72258375/147749414-d95b96fb-988a-497f-9241-1688b4797166.png)
+
+

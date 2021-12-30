@@ -4,6 +4,9 @@ echo "Testing zsh.."
 command -v zsh > /dev/null 2>&1 || { echo >&2 "I require zsh, aborting."; exit 1;}
 echo "zsh installed"
 
+echo "Testing git.."
+command -v git > /dev/null 2>&1 || { echo >&2 "I require git to install dependency, aborting."; exit 1;}
+
 SCRIPT_DIR="$(dirname $(readlink -f "$0"))"
 
 echo "Testing oh-my-zsh"
@@ -32,6 +35,11 @@ echo "Copying .zshrc from $SCRIPT_DIR to $HOME"
 [ -f $HOME/.zshrc ] && cp $HOME/.zshrc $HOME/.zshrc.old || echo "Creating new .zshrc"
 cp $SCRIPT_DIR/.zshrc $HOME/.zshrc
 echo "zshrc copy ok"
+
+# Install plugins
+[ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
+
+[ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "Starting zsh in 2 seconds.."
 echo "zsh will be set as default shell"
